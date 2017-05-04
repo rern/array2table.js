@@ -26,7 +26,9 @@ var table = array2table( {
     , setID:      'id'      // default: (none)
     , setClass:   'class'   // default: (none)
 } );
+	
 $( 'body' ).append( table );
+	
 // or with custom column
 /*
 $( 'body' ).append( table )
@@ -37,6 +39,7 @@ $( 'body' ).append( table )
         //.sortable()
 ;
 */
+	
 function array2table( data ) {
 	var thTag =  ( data.thTag == null ) ? 'td' : 'th';
 	var setID = ( data.setID == null ) ? '' : ' id="'+ data.setID +'"';
