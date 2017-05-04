@@ -6,35 +6,37 @@ $phpArray = array(
 );
 ?>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 $( function () {
 
 var tbarray = <?php echo json_encode( $phpArray ) ;?>;
 // or use js array directly
-// var tbarray = [
-//	['td00', 'td01', 'td02', 'td03'],
-//	['td10', 'td11', 'td12', 'td13']
-// ];
+/*
+var tbarray = [
+	['td00', 'td01', 'td02', 'td03'],
+	['td10', 'td11', 'td12', 'td13']
+];
+*/
 var tharray = ['th0', 'th1', 'th2', 'th3'];
 var table = array2table( {
-      tbodyArray: [tbarray]
-    , theadArray: [tharray] // default: (none)
+      tbodyArray: tbarray
+    , theadArray: tharray // default: (none)
     , thTag:      'th'      // default: 'td'
     , setID:      'id'      // default: (none)
     , setClass:   'class'   // default: (none)
 } );
-
-$( 'body script:first' ).before( table );
-
+$( 'body' ).append( table );
 // or with custom column
-$( 'body script:first' ).before( table )
-  .find( '#id td:nth-child( 1 )' ) // custom column '1'
-    .html( 'content' ) // add repetitive 'td' content
-    .addClass( 'class1 class2' ) // add repetitive 'td' class
+/*
+$( 'body' ).append( table )
+  .find( '#id tbody td:nth-child( 1 )' ) // get column '1'
+    .addClass( 'class1 class2' ) // add class
+	.before('<td>repetitive</td>') // insert repetitive content column before
       //.end().find( '#id' ) // to select the table for other chained operation
         //.sortable()
 ;
-
+*/
 function array2table( data ) {
 	var thTag =  ( data.thTag == null ) ? 'td' : 'th';
 	var setID = ( data.setID == null ) ? '' : ' id="'+ data.setID +'"';
