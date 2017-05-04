@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
 $phpArray = array(
-  array('td00', 'td01', 'td02', 'td03'),
-  array('td10', 'td11', 'td12', 'td13'),
+  array('td00', 'td01', 'td02', 'td03', ''),
+  array('td10', 'td11', 'td12', 'td13', ''),
 );
 ?>
 
@@ -14,11 +14,11 @@ var tbarray = <?php echo json_encode( $phpArray ) ;?>;
 // or use js array directly
 /*
 var tbarray = [
-	['td00', 'td01', 'td02', 'td03'],
-	['td10', 'td11', 'td12', 'td13']
+	['td00', 'td01', 'td02', 'td03', ''],
+	['td10', 'td11', 'td12', 'td13', '']
 ];
 */
-var tharray = ['th0', 'th1', 'th2', 'th3'];
+var tharray = ['th0', 'th1', 'th2', 'th3', ''];
 var table = array2table( {
       tbodyArray: tbarray
     , theadArray: tharray // default: (none)
@@ -26,20 +26,17 @@ var table = array2table( {
     , setID:      'id'      // default: (none)
     , setClass:   'class'   // default: (none)
 } );
-	
 $( 'body' ).append( table );
-	
 // or with custom column
 /*
 $( 'body' ).append( table )
-  .find( '#id tbody td:nth-child( 1 )' ) // get column '1'
+  .find( '#id tbody td:nth-child( 5 )' ) // get column '5'
     .addClass( 'class1 class2' ) // add class
-	.before('<td>repetitive</td>') // insert repetitive content column before
+	.html('repetitive') // add repetitive content
       //.end().find( '#id' ) // to select the table for other chained operation
         //.sortable()
 ;
 */
-	
 function array2table( data ) {
 	var thTag =  ( data.thTag == null ) ? 'td' : 'th';
 	var setID = ( data.setID == null ) ? '' : ' id="'+ data.setID +'"';
